@@ -5,19 +5,20 @@ import { registerUser } from '../actions/auth';
 import { setFlash } from '../actions/flash';
 
 class Register extends Component {
-  state = { name: '', email: '', password: '', passwordConfirmation: '' };
+  state = { name: '', gamertag: '', email: '', password: '', passwordConfirmation: '' };
 
   handleSubmit = event => {
     event.preventDefault();
     const {
       name,
+      gamertag,
       email,
       password,
       passwordConfirmation
     } = this.state;
     const { dispatch, history } = this.props;
     if (password === passwordConfirmation) {
-      dispatch(registerUser(name, email, password, passwordConfirmation, history));
+      dispatch(registerUser(name, gamertag, email, password, passwordConfirmation, history));
     } else dispatch(setFlash('Passwords do not match!, please try again', 'red'));
   }
 
@@ -30,7 +31,7 @@ class Register extends Component {
   }
 
   render() {
-    const { name, email, password, passwordConfirmation } = this.state;
+    const { name, gamertag, email, password, passwordConfirmation } = this.state;
 
     return (
       <Segment basic>
@@ -43,6 +44,16 @@ class Register extends Component {
               placeholder="Name"
               required
               value={name}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label htmlFor="gamertag">Gamertag</label>
+            <input
+              id="gamertag"
+              placeholder="Gamertag"
+              required
+              value={gamertag}
               onChange={this.handleChange}
             />
           </Form.Field>
