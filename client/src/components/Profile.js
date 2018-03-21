@@ -49,6 +49,17 @@ class Profile extends React.Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
+    const { formValues: { name, email, file, gamertag }} = this.state;
+    const { user, dispatch } = this.props;
+    dispatch(updateUser(user.id, { name, email, file, gamertag }))
+    this.setState({
+      editing: false,
+      formValues: {
+        ...this.state.formValues,
+        file: ''
+      }
+    })
   }
 
   profileView = () => {
@@ -88,7 +99,7 @@ class Profile extends React.Component {
             { file && <Image src={file.preview} /> }
           </Dropzone>
         </Grid.Column>
-        <Grid.Column>
+        <Grid.Column width={8}>
           <Form.Input
             label="Name"
             name="name"
