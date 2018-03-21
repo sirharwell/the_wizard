@@ -8,9 +8,9 @@ export const updateUser = (id, user) => {
     let url = `/api/users/${id}?name=${name}&email=${email}&gamertag=${gamertag}`
     axios.put(url, data)
       .then( res => {
-        dispatch({
-          type: 'USER',
-          user: res.data,
+        dispatch({ 
+          type: 'USER', 
+          user: res.data, 
           headers: res.headers
         })
       });

@@ -3,7 +3,7 @@ const user = (state = {}, action) => {
     case 'LOGIN':
       return action.user;
     case 'USER':
-      return actions.user;
+      return action.user;
     case 'LOGOUT':
       return {};
     default:

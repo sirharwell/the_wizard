@@ -5,16 +5,22 @@ import { registerUser } from '../actions/auth';
 import { setFlash } from '../actions/flash';
 
 class Register extends Component {
-  state = { name: '', gamertag: '', email: '', password: '', passwordConfirmation: '' };
+  state = { 
+    name: '', 
+    email: '', 
+    password: '', 
+    passwordConfirmation: '',
+    gamertag: '',
+  };
 
   handleSubmit = event => {
     event.preventDefault();
-    const {
-      name,
+    const { 
       gamertag,
-      email,
-      password,
-      passwordConfirmation
+      name,
+      email, 
+      password, 
+      passwordConfirmation 
     } = this.state;
     const { dispatch, history } = this.props;
     if (password === passwordConfirmation) {
@@ -31,7 +37,7 @@ class Register extends Component {
   }
 
   render() {
-    const { name, gamertag, email, password, passwordConfirmation } = this.state;
+    const { gamertag, name, email, password, passwordConfirmation } = this.state;
 
     return (
       <Segment basic>
@@ -52,7 +58,6 @@ class Register extends Component {
             <input
               id="gamertag"
               placeholder="Gamertag"
-              required
               value={gamertag}
               onChange={this.handleChange}
             />

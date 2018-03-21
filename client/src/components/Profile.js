@@ -17,11 +17,11 @@ const Fragment = React.Fragment;
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
 class Profile extends React.Component {
-  state = {
-    editing: false,
-    formValues: {
-      name: '',
-      email: '',
+  state = { 
+    editing: false, 
+    formValues: { 
+      name: '', 
+      email: '', 
       gamertag: '',
       file: ''
     },
@@ -154,3 +154,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Profile)
+
+
+
