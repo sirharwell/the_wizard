@@ -7,6 +7,7 @@ import {
   Image
 } from 'semantic-ui-react';
 import { getLikeUsers } from '../actions/likeUsers';
+import UserCard from './UserCard'
 
 class LikeUsers extends React.Component {
   componentDidMount() {
@@ -27,26 +28,8 @@ class LikeUsers extends React.Component {
     return (
       <Card.Group itemsPerRow={4}>
         { likeUsers.map( user => {
-          const { id, name, image, tags } = user;
-          return (
-            <Card key={id}>
-              <Image src={ image } />
-              <Card.Content>
-                <Card.Header>{name}</Card.Header>
-                <Card.Description>
-                  <List divided horizontal>
-                    { tags.map( tag =>
-                    <List.Item key={tag.id}>
-                      {tag.name}
-                    </List.Item>
-                              )
-                    }
-                  </List>
-                </Card.Description>
-              </Card.Content>
-            </Card>
-          )
-          })
+            <UserCard key={user.id} user ={user} />
+            )
         }
       </Card.Group>
     )
