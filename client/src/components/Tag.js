@@ -12,10 +12,10 @@ const styles = {
   }
 }
 
-const Tag = ({
-  tag,
-  deletable,
-  deleteAction
+const Tag = ({ 
+  tag, 
+  deletable, 
+  deleteAction 
 }) => (
   <List.Item style={styles.tag}>
     { deletable &&
@@ -35,3 +35,5 @@ const Tag = ({
 )
 
 export default Tag
+
+

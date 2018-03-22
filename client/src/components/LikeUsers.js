@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  Card,
-  Divider,
-  List,
-  Image
+import { 
+  Card, 
+  Divider, 
+  List, 
+  Image 
 } from 'semantic-ui-react';
 import { getLikeUsers } from '../actions/likeUsers';
-import UserCard from './UserCard'
+import UserCard from './UserCard';
 
 class LikeUsers extends React.Component {
   componentDidMount() {
@@ -24,12 +24,12 @@ class LikeUsers extends React.Component {
   }
 
   render() {
-    const { likeUsers } = this.props;
+    const { users } = this.props;
     return (
       <Card.Group itemsPerRow={4}>
-        { likeUsers.map( user => {
-            <UserCard key={user.id} user ={user} />
-            )
+        { users.map( user => 
+            <UserCard key={user.id} user={user} />
+          )
         }
       </Card.Group>
     )
@@ -37,11 +37,13 @@ class LikeUsers extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const { users, total_pages } = sate.likeUsers;
-  return {
-    tags: state.tags,
-    likeUsers: state.likeUsers,
+  const { users, total_pages } = state.likeUsers;
+  return { 
+    tags: state.tags, 
+    users,
+    total_pages,
   }
 }
 
 export default connect(mapStateToProps)(LikeUsers)
+

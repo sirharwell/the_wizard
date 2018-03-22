@@ -6,8 +6,9 @@ import likeUsers from './likeUsers';
 
 const rootReducer = combineReducers({
   user,
-  flash
+  flash,
   tags,
+  likeUsers,
 });
 
 export default rootReducer;

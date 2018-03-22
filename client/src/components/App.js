@@ -10,7 +10,7 @@ import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 import AuthRoute from './AuthRoute';
 import FetchUser from './FetchUser';
-import TagList form './TagList';
+import TagList from './TagList';
 
 class App extends Component {
   render() {
@@ -20,14 +20,14 @@ class App extends Component {
         <Flash />
         <FetchUser>
           <Switch>
-            <ProtectedRoute exact path='/' component={Home} />
+            <ProtectedRoute exact path='/' component={Profile} />
             <ProtectedRoute
               exact
               path='/tags/:tag'
               component={TagList}
-              />
-            <ProtectedRoute
-              exact
+            />
+            <ProtectedRoute 
+              exact 
               path='/profile'
               component={Profile}
             />

@@ -8,9 +8,8 @@ class TagForm extends React.Component {
 
   handleChange = (e) => {
     const { value } = e.target;
-    const { name = value.toLowerCase().replace ('', '' )
-    this.setState({})
-  }
+    const name = value.toLowerCase().replace(' ', '')
+    this.setState({ name })
   }
 
   handleSubmit = (e) => {

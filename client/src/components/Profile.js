@@ -11,15 +11,16 @@ import {
 import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import { updateUser } from '../actions/user';
+import Tags from './Tags';
 
 const Fragment = React.Fragment;
 
 class Profile extends React.Component {
-  state = {
-    editing: false,
-    formValues: {
-      name: '',
-      email: '',
+  state = { 
+    editing: false, 
+    formValues: { 
+      name: '', 
+      email: '', 
       gamertag: '',
       file: ''
     },
@@ -155,3 +156,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Profile)
+
+
+

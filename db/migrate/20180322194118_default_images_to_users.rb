@@ -10,5 +10,4 @@ class DefaultImagesToUsers < ActiveRecord::Migration[5.1]
     change_column :users, :image, :string, default: nil
     User.where(image: default).update_all(image: nil)
   end
-
 end

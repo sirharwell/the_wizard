@@ -12,7 +12,7 @@ gem 'rails', '~> 5.1.5'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-# gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', '~> 2.5'
 
 gem 'aws-sdk'
 gem 'kaminari'

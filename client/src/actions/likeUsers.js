@@ -1,19 +1,20 @@
 import axios from 'axios';
 
-export const getUsersByTag = (tag) => {
-  return (dispatch) => {
-    axios.get(`/api/users/${tag}`)
-      .then( res => dispatch(likeUsers(res.data, res.headers)) )
-  }
-}
-
 export const getLikeUsers = () => {
   return (dispatch) => {
     axios.get('/api/like_users')
-      .then( res => dispatch(likeUsers(res.data, res.headers)) )
+      .then( res => dispatch({ type: 'LIKE_USERS', users: res.data, headers: res.headers }) )
   }
 }
 
-const likeUsers = (users, headers) => {
-  return { type: 'LIKE_USERS', users, headers }
+export const getUsersByTag = (tag, page = 1) => {
+  return (dispatch) => {
+    axios.get(`/api/users/${tag}?page=${page}`)
+      .then( res => {
+        const type = page > 1 ? 'LOAD_MORE' : 'LIKE_USERS'
+        dispatch({ type, users: res.data, headers: res.headers }) 
+      })
+  }
 }
+
+

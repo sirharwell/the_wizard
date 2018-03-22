@@ -3,7 +3,7 @@ marblemadness = Tag.create(name: 'marblemadness')
 excitebike = Tag.create(name: 'excitebike')
 tags = [contra, marblemadness, excitebike]
 
-1000.times do
+1000.times do 
   name = Faker::Name.name
   u = User.create(
     name: name,
