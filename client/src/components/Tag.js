@@ -18,7 +18,7 @@ const Tag = ({
   deleteAction
 }) => (
   <List.Item style={styles.tag}>
-    { deleteable &&
+    { deletable &&
         <List.Icon
           name="cancel"
           onClick={ () => deleteAction(tag.id) }

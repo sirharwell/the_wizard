@@ -3,6 +3,7 @@ import { Divider, List, Header } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getTags } from '../actions/tags';
 import TagForm from './TagForm';
+import Tag from './Tag'
 
 class Tags extends React.Component {
   componentDidMount() {
@@ -22,17 +23,12 @@ class Tags extends React.Component {
             </Header>
             <List divided horizontal>
               { tags.map( tag =>
-                  <List.Item key={tag.id}>
-                    <List.Icon
-                      name="cancel"
-                      style={{ cursor: 'pointer' }}
-                    />
-                    <List.Content>
-                      <List.Header>
-                        #{tag.name}
-                      </List.Header>
-                    </List.Content>
-                  </List.Item>
+                <Tag
+                  key={tag.id}
+                  tag={tag}
+                  deletable={true}
+                  deleteAction={ () => this.props.dispatch(deleteTag(tag.id ))}
+                  />
                 )
               }
             </List>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Image, List } from 'semantic-ui-react';
+import Tag from './Tag';
 
 const UserCard = ({ user }) => {
   const { id, name, image, tags = [] } = user;
@@ -11,7 +12,7 @@ const UserCard = ({ user }) => {
         <Card.Description>
           <List divided horizontal>
             { tags.map( tag =>
-                <List.Item key={tag.id}>{tag.name}</List.Item>
+                <Tag key={tag.id} tag={tag} />
               )
             }
           </List>
