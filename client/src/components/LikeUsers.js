@@ -37,6 +37,7 @@ class LikeUsers extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const { users, total_pages } = sate.likeUsers;
   return {
     tags: state.tags,
     likeUsers: state.likeUsers,

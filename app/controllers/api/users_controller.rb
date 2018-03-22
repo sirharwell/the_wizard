@@ -1,13 +1,19 @@
 class Api::UsersController < Api::ApiController
 
   def tag
-    @users = User.by_tag(current_user.id, params[:tag])
+    @users = User
+      .page(params[:page])
+      .by_tag(current_user.id, params[:tag])
+    @total_pages = @users.total_pages
     render 'user.jbuilder'
   end
 
   def like
     tags = current_user.tags.map { |tag| tag.name }
-    @users = User.like_users(current_user.id, tags)
+    @users = User
+      .page(params[:page])
+      .like_users(current_user.id, tags)
+    @total_pages = @users.total_pages
     render 'user.jbuilder'
   end
 

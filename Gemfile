@@ -15,11 +15,13 @@ gem 'puma', '~> 3.7'
 # gem 'jbuilder', '~> 2.5'
 
 gem 'aws-sdk'
+gem 'kaminari'
 
 gem 'omniauth'
 gem 'devise'
 gem 'devise_token_auth'
 group :development, :test do
+  gem 'faker'
   gem 'pry'
   gem 'dotenv-rails'
 end
