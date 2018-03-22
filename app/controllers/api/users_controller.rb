@@ -1,5 +1,9 @@
-class Api::UsersController < Api::ApplicationController
-    before_action :authenticate_user!
+class Api::UsersController < Api::ApiController
+
+  def tag
+    @users = User.by_tag(current_user.id, params[:tag])
+    render 'user.jbuilder'
+  end
 
   def like
     tags = current_user.tags.map { |tag| tag.name }
@@ -16,14 +20,17 @@ class Api::UsersController < Api::ApplicationController
         s3_bucket = ENV['BUCKET']
         file = params[:file]
         begin
-            ext = File.extname(file.tempfile)
-            obj = s3.bucket(s3_bucket).object("avatars/#{user.id}#{ext}")
-            obj.upload_file(file.tempfile, acl: 'public-read')
-            user.image = obj.public_url
+      if !file.blank?
+              ext = File.extname(file.tempfile)
+              obj = s3.bucket(s3_bucket).object("avatars/#{user.id}#{ext}")
+              obj.upload_file(file.tempfile, acl: 'public-read')
+              user.image = obj.public_url
+      end
+
             if user.save
                 render json: user
             else
-                render json: { errors: user.errors.full_messages }, status: 422
+                handle_error(user)
             end
         rescue => e
             render json: { errors: e }, status: 422
