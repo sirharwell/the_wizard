@@ -1,17 +1,16 @@
 import axios from 'axios';
 
-export const getUsersByTag = (tag)=> {
+export const getUsersByTag = (tag) => {
   return (dispatch) => {
     axios.get(`/api/users/${tag}`)
       .then( res => dispatch(likeUsers(res.data, res.headers)) )
-      }
   }
-
+}
 
 export const getLikeUsers = () => {
   return (dispatch) => {
     axios.get('/api/like_users')
-      .then( res => {ispatch(likeUsers(res.data, res.headers)) )
+      .then( res => dispatch(likeUsers(res.data, res.headers)) )
   }
 }
 
