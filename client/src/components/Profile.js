@@ -14,8 +14,6 @@ import { updateUser } from '../actions/user';
 
 const Fragment = React.Fragment;
 
-const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
-
 class Profile extends React.Component {
   state = {
     editing: false,
@@ -67,7 +65,7 @@ class Profile extends React.Component {
     return (
       <Fragment>
         <Grid.Column width={4}>
-          <Image src={user.image || defaultImage} />
+          <Image src={user.image} />
         </Grid.Column>
         <Grid.Column width={8}>
           <Header as="h1">{user.name}</Header>
